@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:08:40 by dchheang          #+#    #+#             */
-/*   Updated: 2021/11/14 16:20:57 by dchheang         ###   ########.fr       */
+/*   Updated: 2021/11/15 04:32:26 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	Karen::error(void)
 void	Karen::complain(std::string level)
 {
 	std::string	levels[] = { "debug", "info", "warning", "error" };
+	std::string toUpper[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 	void (Karen::*f[])(void) = {
 		&Karen::debug,
 		&Karen::info,
@@ -55,7 +56,11 @@ void	Karen::complain(std::string level)
 	while (i < 4)
 	{
 		if (level == levels[i])
+		{
+			std::cout << "[ " << toUpper[i] << " ]" << std::endl;
 			(this->*f[i])();
+			std::cout << std::endl;
+		}
 		i++;
 	}
 }
