@@ -6,14 +6,15 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 06:06:47 by dchheang          #+#    #+#             */
-/*   Updated: 2021/11/15 09:11:44 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/01 23:00:17 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <math.h>
 #include "Fixed.hpp"
 
-int const Fixed::size = 0;
+int const Fixed::n_fractional = 8;
 
 Fixed::Fixed() : value(0)
 {
@@ -24,6 +25,18 @@ Fixed::Fixed(Fixed const& f)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = f;
+}
+
+Fixed::Fixed(int const i)
+{
+	std::cout << "Int constructor called" << std::endl;
+	value = i << n_fractional;
+}
+
+Fixed::Fixed(float const f)
+{
+	std::cout << "Float constructor called" << std::endl;
+	value = roundf(f * (1 << n_fractional));
 }
 
 Fixed::~Fixed()
@@ -40,7 +53,6 @@ Fixed&	Fixed::operator=(Fixed const &f)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (value);
 }
 
@@ -49,31 +61,18 @@ void	Fixed::setRawBits(int const raw)
 	value = raw;
 }
 
+int	Fixed::toInt(void) const
+{
+	return (value >> n_fractional);
+}
+
+float	Fixed::toFloat(void) const
+{
+	return ((float)value / (float)(1 << n_fractional));
+}
+
 std::ostream	&operator<<(std::ostream &os, Fixed const& f)
 {
-	int				i;
-	int				fractional_part;
-	int				integer_part;
-	int				ten;
-	int				value;
-
-	i = 0;
-	fractional_part = 0;
-	integer_part = 0;
-	ten = 1;
-	value = f.getRawBits();
-	while (i < 8)
-	{
-		fractional_part += (value & 1) * 10;
-		value = value >> 1;
-		i++;
-	}
-	while (i < 24)
-	{
-		integer_part += (value & 1) * 10;
-		value = value >> 1;
-		i++;
-	}
-	os << integer_part << "." << fractional_part << std::endl;
+	os << f.toFloat();
 	return (os);
 }
