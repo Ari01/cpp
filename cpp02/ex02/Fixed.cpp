@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 06:06:47 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/01 23:48:14 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:48:11 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,4 +145,53 @@ Fixed	Fixed::operator/(Fixed const& f)
 	tmp2 = (long)f.getRawBits();
 	ret.setRawBits(tmp1 * (1 << n_fractional) / tmp2);
 	return (ret);
+}
+
+Fixed	&Fixed::operator++(void)
+{
+	this->value++;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	copy(*this);
+
+	++(*this);
+	return (copy);
+}
+
+Fixed	&Fixed::operator--(void)
+{
+	this->value--;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	copy(*this);
+
+	--(*this);
+	return (copy);
+}
+
+// MIN MAX
+Fixed	&Fixed::min(Fixed &f1, Fixed &f2)
+{
+	return (f1 < f2 ? f1 : f2);
+}
+
+Fixed	&min(Fixed &f1, Fixed &f2)
+{
+	return (f1 < f2 ? f1 : f2);
+}
+
+Fixed	&Fixed::max(Fixed &f1, Fixed &f2)
+{
+	return (f1 > f2 ? f1 : f2);
+}
+
+Fixed	&max(Fixed &f1, Fixed &f2)
+{
+	return (f1 > f2 ? f1 : f2);
 }
