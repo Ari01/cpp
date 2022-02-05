@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:50:21 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/05 01:39:51 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/05 01:43:27 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	main()
 	ClapTrap thor("Thor");
 	ClapTrap peach("Princess Peach");
 
-	std::cout << std::endl << "Preparing Combat simulation..." << std::endl;
+	std::cout << std::endl << "CLAPTRAP WAR EPISODE 1" << std::endl;
+	std::cout << "Preparing Combat simulation..." << std::endl;
 	std::cout << "Opponents found." << std::endl << std::endl;
 	std::cout << "Opponent 1 : ";
 	thor.print();
