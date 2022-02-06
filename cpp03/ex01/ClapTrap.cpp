@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:17:12 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/06 20:04:18 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:19:26 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 ClapTrap::ClapTrap() : name("unknown"), hp(10), energy(10), ad(0)
 {
 	std::cout << "ClapTrap Default constructor called" << std::endl;	
-}
-
-ClapTrap::ClapTrap(std::string name, int hp, int energy, int ad) :
-	name(name), hp(hp), energy(energy), ad(ad)
-{
-	std::cout << "ClapTrap Attributes constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : hp(10), energy(10), ad(0)
@@ -75,6 +69,12 @@ void	ClapTrap::setAd(int ad)
 	this->ad = ad;
 }
 
+void	ClapTrap::setAttributes(int hp, int energy, int ad)
+{
+	this->hp = hp;
+	this->energy = energy;
+	this->ad = ad;
+}
 
 void	ClapTrap::print()
 {
