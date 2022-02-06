@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:10:43 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/06 19:08:05 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:18:38 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class ClapTrap
 		void		setHp(int);
 		void		setAd(int);
 		void		setEnergy(int);
+		void		setAttributes(int hp, int energy, int ad);
 		ClapTrap	&operator=(ClapTrap const& ct);
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);

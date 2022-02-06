@@ -6,22 +6,21 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 18:25:17 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/06 20:01:19 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:20:03 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("unknown", 100, 50, 20)
+ScavTrap::ScavTrap() : ClapTrap("unknown")
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;	
+	setAttributes(100, 50, 20);
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	hp = 100;
-	energy = 50;
-	ad = 20;
+	setAttributes(100, 50, 20);
 	std::cout << "ScavTrap name constructor called" << std::endl;	
 }
 

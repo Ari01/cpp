@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:17:12 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/06 19:34:30 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:38:05 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ void	ClapTrap::setAd(int ad)
 	this->ad = ad;
 }
 
+void	ClapTrap::setAttributes(int hp, int energy, int ad)
+{
+	this->hp = hp;
+	this->energy = energy;
+	this->ad = ad;
+}
 
 void	ClapTrap::print()
 {
@@ -79,9 +85,7 @@ void	ClapTrap::print()
 ClapTrap	&ClapTrap::operator=(ClapTrap const& ct)
 {
 	name = ct.name;
-	hp = ct.hp;
-	energy = ct.energy;
-	ad = ct.ad;
+	this->setAttributes(ct.hp, ct.energy, ct.ad);
 	return (*this);
 }
 
