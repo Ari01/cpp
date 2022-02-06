@@ -6,11 +6,11 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 03:20:39 by dchheang          #+#    #+#             */
-/*   Updated: 2021/11/13 04:33:24 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/06 22:05:41 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 
 std::string	wait_cmd()
 {
@@ -23,7 +23,7 @@ std::string	wait_cmd()
 
 int	main()
 {
-	Phonebook	phonebook;
+	PhoneBook	phonebook;
 	std::string	cmd;
 
 	cmd = wait_cmd();

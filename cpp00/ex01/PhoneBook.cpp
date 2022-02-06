@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 01:57:22 by dchheang          #+#    #+#             */
-/*   Updated: 2021/11/13 05:30:12 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/06 22:04:53 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 
 int	ft_isdigit(char c)
 {
@@ -54,11 +54,11 @@ int	ft_atoi(std::string s)
 	return (ret);
 }
 
-Phonebook::Phonebook() : n_contact(0) {}
+PhoneBook::PhoneBook() : n_contact(0) {}
 
-Phonebook::~Phonebook() {}
+PhoneBook::~PhoneBook() {}
 
-void	Phonebook::set_contact(int i, std::string s)
+void	PhoneBook::set_contact(int i, std::string s)
 {
 	std::string	tmp;
 
@@ -67,7 +67,7 @@ void	Phonebook::set_contact(int i, std::string s)
 	this->contact[this->n_contact].set_attr(i, tmp);
 }
 
-void	Phonebook::add_contact()
+void	PhoneBook::add_contact()
 {
 	if (this->n_contact == 8)
 		std::cout << "Phonebook full" << std::endl;
@@ -82,7 +82,7 @@ void	Phonebook::add_contact()
 	}
 }
 
-void	Phonebook::print_entries()
+void	PhoneBook::print_entries()
 {
 	int	i;
 
@@ -96,7 +96,7 @@ void	Phonebook::print_entries()
 	}
 }
 
-int	Phonebook::check_index(std::string s)
+int	PhoneBook::check_index(std::string s)
 {
 	std::string::iterator	ite;
 
@@ -115,7 +115,7 @@ int	Phonebook::check_index(std::string s)
 	return (1);
 }
 
-void	Phonebook::search()
+void	PhoneBook::search()
 {
 	int						i;
 	std::string				tmp;
@@ -130,9 +130,4 @@ void	Phonebook::search()
 		std::cout << "Error: index not found" << std::endl;
 	else
 		this->contact[i].print_attr();
-}
-
-void Phonebook::exit()
-{
-	::exit(0);
 }

@@ -6,12 +6,11 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 05:32:14 by dchheang          #+#    #+#             */
-/*   Updated: 2021/11/14 07:03:09 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/06 22:49:12 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <chrono>
 #include "Account.hpp"
 
 int	Account::_nbAccounts = 0;
@@ -134,8 +133,8 @@ void	Account::displayStatus(void) const
 void	Account::_displayTimestamp(void)
 {
 	time_t now;
-	
-	now = time(0);
+
+	now = time(NULL);
 	tm *local_time = localtime(&now);
 	std::cout << "[";
 	std::cout << local_time->tm_year;
