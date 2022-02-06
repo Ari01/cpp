@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:10:43 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/06 20:02:42 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/06 19:08:05 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class ClapTrap
 
 	public:
 		ClapTrap();
-		ClapTrap(std::string name, int hp, int energy, int ad);
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const& ct);
 		~ClapTrap();
