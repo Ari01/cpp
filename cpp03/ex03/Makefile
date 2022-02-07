@@ -7,7 +7,7 @@ SRCS =		ClapTrap.cpp \
 			main.cpp
 
 OBJS =		$(SRCS:.cpp=.o)
-CC =		clang++
+CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -Wshadow -std=c++98
 
 all:		$(NAME)

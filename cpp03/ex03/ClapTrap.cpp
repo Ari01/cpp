@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:17:12 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/06 21:49:19 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/07 00:53:40 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ ClapTrap::ClapTrap() : name("unknown"), hp(10), energy(10), ad(0)
 	std::cout << "ClapTrap Default constructor called" << std::endl;	
 }
 
-ClapTrap::ClapTrap(std::string name) : hp(10), energy(10), ad(0)
+ClapTrap::ClapTrap(std::string _name) : hp(10), energy(10), ad(0)
 {
 	std::cout << "ClapTrap Name constructor called" << std::endl;
-	this->name = name;
+	name = _name;
 }
 
 ClapTrap::ClapTrap(ClapTrap const& ct)

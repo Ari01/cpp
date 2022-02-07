@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 18:25:17 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/06 20:20:03 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/07 00:54:40 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ ScavTrap::ScavTrap() : ClapTrap("unknown")
 	setAttributes(100, 50, 20);
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)
 {
 	setAttributes(100, 50, 20);
 	std::cout << "ScavTrap name constructor called" << std::endl;	
 }
 
-ScavTrap::ScavTrap(ScavTrap const& st)
+ScavTrap::ScavTrap(ScavTrap const& st) : ClapTrap()
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
 	*this = st;

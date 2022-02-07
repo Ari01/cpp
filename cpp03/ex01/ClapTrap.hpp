@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:10:43 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/06 20:18:38 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/07 00:33:58 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ClapTrap
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const& ct);
 		~ClapTrap();
-		
+
 		void		print(void);
 		std::string	getName(void);
 		int			getHp(void);
@@ -42,6 +42,6 @@ class ClapTrap
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
-};
+	};
 
 #endif
