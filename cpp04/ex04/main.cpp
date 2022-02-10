@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 01:53:33 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/10 03:46:39 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/10 10:40:10 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main()
 	*me = *bob;
 
 	std::cout << std::endl;
+	delete(tmp);
 	delete(bob);
 	delete(me);
 	delete(src);
