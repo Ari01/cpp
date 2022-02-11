@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:11:27 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/11 05:33:40 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/11 05:55:10 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ int	main()
 	try {
 		Bureaucrat b1("b1", 1);
 		Bureaucrat b2("b2", 150);
-		b5 = b1;
+		Bureaucrat b3(b1);
 		b6 = b2;
-		std::cout << b5;
-		b5.downgrade();
-		std::cout << b5;
+		std::cout << b3;
+		b3.downgrade();
+		std::cout << b3;
 	} catch (std::exception e) {
 		std::cout << e.what() << std::endl;
 	}
