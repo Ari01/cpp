@@ -23,7 +23,7 @@ clean:
 			rm -rf $(OBJS)
 
 fclean:		clean
-			rm -rf $(NAME) .*.swp
+			rm -rf $(NAME) .*.swp debug
 
 re:			fclean all
 
