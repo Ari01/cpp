@@ -1,6 +1,7 @@
 NAME =		bureaucrat
 
 SRC =		Bureaucrat.cpp \
+			Form.cpp \
 			main.cpp
 
 OBJS =		$(SRC:.cpp=.o)
@@ -23,7 +24,7 @@ clean:
 			rm -rf $(OBJS)
 
 fclean:		clean
-			rm -rf $(NAME) .*.swp
+			rm -rf $(NAME) .*.swp debug
 
 re:			fclean all
 
