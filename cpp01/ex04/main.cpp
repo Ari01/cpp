@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:42:19 by dchheang          #+#    #+#             */
-/*   Updated: 2021/11/14 12:07:58 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/13 11:43:06 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,27 @@ std::string	replace(std::string line, std::string s1, std::string s2)
 	size_t	i;
 
 	i = line.find(s1);
-	if (i != line.npos)
+	while (i != line.npos)
 	{
 		line.erase(i, s1.size());
 		line.insert(i, s2);
+		i = line.find(s1);
 	}
 	return (line);
 }
 
 int	main(int ac, char **av)
 {
+	std::string	tmp;
+
 	if (ac != 4)
 		std::cout << "error: invalid arguments";
 	else
 	{
+		tmp = av[1];
+		tmp += ".replace";
 		std::ifstream	ifs(av[1]);
-		std::ofstream	ofs(std::string(av[1]) + ".replace");
+		std::ofstream	ofs(tmp.c_str());
 		std::string		line;
 		std::string		s1 = av[2];
 		std::string		s2 = av[3];

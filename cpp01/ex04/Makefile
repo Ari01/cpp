@@ -4,12 +4,15 @@ SRCS =		main.cpp
 
 OBJS =		$(SRCS:.cpp=.o)
 CC =		c++
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror -std=c++98
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $@
+
+debug:		$(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) -fsanitize=address -o $@
 
 .cpp.o:
 			$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
