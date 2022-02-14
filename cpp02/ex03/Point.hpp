@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 21:26:34 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/04 21:56:34 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:09:50 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Point
 	public:
 		Point();
 		Point(Fixed const& x, Fixed const& y);
+		Point(float const& x, float const& y);
 		Point(Point const& p);
 		~Point();
 		

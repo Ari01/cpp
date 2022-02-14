@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 21:35:44 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/04 22:18:21 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:10:41 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 Point::Point() : x(0), y(0) {}
 
 Point::Point(Fixed const& _x, Fixed const& _y) : x(_x), y(_y) {}
+
+Point::Point(float const& _x, float const& _y) : x(_x), y(_y) {}
 
 Point::Point(Point const &p)
 {
