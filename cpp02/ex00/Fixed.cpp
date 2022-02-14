@@ -6,14 +6,14 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 06:06:47 by dchheang          #+#    #+#             */
-/*   Updated: 2021/11/15 08:19:53 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 08:19:01 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Fixed.hpp"
 
-int const Fixed::size = 0;
+int const Fixed::size = 8;
 
 Fixed::Fixed() : value(0)
 {

@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 14:06:32 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/13 15:02:59 by dchheang         ###   ########.fr       */
+/*   Created: 2022/02/13 15:20:37 by dchheang          #+#    #+#             */
+/*   Updated: 2022/02/13 15:21:41 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Karen.hpp"
+#ifndef PRESIDENTIAL_HPP
+#define PRESIDENTIAL_HPP
 
-int	main(int ac, char **av)
+#include "Form.hpp"
+
+class PresidentialPardonForm : public Form
 {
-	Karen	karen;
+	public:
+		PresidentialPardonForm();
+		PresidentialPardonForm(PresidentialPardonForm const& scf);
+		virtual ~PresidentialPardonForm();
 
-	if (ac != 2)
-	{
-		std::cout << "error: invalid arguments" << std::endl;
-		return (0);
-	}
-	karen.complain(av[1]);
-	return (0);
-}
+		PresidentialPardonForm		&operator=(PresidentialPardonForm const& scf);
+		virtual void				execute(Bureaucrat const& e) const;
+};
+
+#endif

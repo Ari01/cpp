@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 06:06:47 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/03 19:48:11 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 08:40:47 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,38 +78,38 @@ std::ostream	&operator<<(std::ostream &os, Fixed const& f)
 }
 
 // COMPARISON
-bool	Fixed::operator>(Fixed const& f)
+bool	Fixed::operator>(Fixed const& f) const
 {
 	return (this->value > f.getRawBits());
 }
 
-bool	Fixed::operator<(Fixed const& f)
+bool	Fixed::operator<(Fixed const& f) const
 {
 	return (this->value < f.getRawBits());
 }
 
-bool	Fixed::operator>=(Fixed const& f)
+bool	Fixed::operator>=(Fixed const& f) const
 {
 	return (this->value >= f.getRawBits());
 }
 
-bool	Fixed::operator<=(Fixed const& f)
+bool	Fixed::operator<=(Fixed const& f) const
 {
 	return (this->value <= f.getRawBits());
 }
 
-bool	Fixed::operator==(Fixed const& f)
+bool	Fixed::operator==(Fixed const& f) const
 {	
 	return (this->value == f.getRawBits());
 }
 
-bool	Fixed::operator!=(Fixed const& f)
+bool	Fixed::operator!=(Fixed const& f) const
 {
 	return (this->value != f.getRawBits());
 }
 
 // ARITHMETIC
-Fixed	Fixed::operator+(Fixed const& f)
+Fixed	Fixed::operator+(Fixed const& f) const
 {
 	Fixed	ret(*this);
 
@@ -117,7 +117,7 @@ Fixed	Fixed::operator+(Fixed const& f)
 	return (ret);
 }
 
-Fixed	Fixed::operator-(Fixed const& f)
+Fixed	Fixed::operator-(Fixed const& f) const
 {
 	Fixed	ret(*this);
 
@@ -125,7 +125,7 @@ Fixed	Fixed::operator-(Fixed const& f)
 	return (ret);
 }
 
-Fixed	Fixed::operator*(Fixed const& f)
+Fixed	Fixed::operator*(Fixed const& f) const
 {
 	Fixed	ret(*this);
 	long	tmp1, tmp2;
@@ -136,7 +136,7 @@ Fixed	Fixed::operator*(Fixed const& f)
 	return (ret);
 }
 
-Fixed	Fixed::operator/(Fixed const& f)
+Fixed	Fixed::operator/(Fixed const& f) const
 {
 	Fixed	ret(*this);
 	long	tmp1, tmp2;
@@ -181,7 +181,7 @@ Fixed	&Fixed::min(Fixed &f1, Fixed &f2)
 	return (f1 < f2 ? f1 : f2);
 }
 
-Fixed	&min(Fixed &f1, Fixed &f2)
+Fixed const	&Fixed::min(Fixed const& f1, Fixed const& f2)
 {
 	return (f1 < f2 ? f1 : f2);
 }
@@ -191,7 +191,7 @@ Fixed	&Fixed::max(Fixed &f1, Fixed &f2)
 	return (f1 > f2 ? f1 : f2);
 }
 
-Fixed	&max(Fixed &f1, Fixed &f2)
+Fixed const	&Fixed::max(Fixed const& f1, Fixed const& f2)
 {
 	return (f1 > f2 ? f1 : f2);
 }

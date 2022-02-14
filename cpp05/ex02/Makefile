@@ -2,6 +2,7 @@ NAME =		bureaucrat
 
 SRC =		Bureaucrat.cpp \
 			Form.cpp \
+			ShrubberyCreationForm.cpp \
 			main.cpp
 
 OBJS =		$(SRC:.cpp=.o)

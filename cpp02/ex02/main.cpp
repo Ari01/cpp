@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 08:07:45 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/03 20:19:12 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 08:45:37 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,33 +65,41 @@ int	main(void)
 	// MIN MAX
 	Fixed g(-42.42f);
 	Fixed h(42.43f);
+	const Fixed i(-42.42f);
+	const Fixed	j(42.43f);
+	Fixed *tmpi = (Fixed *)&i;
+	Fixed *tmpj = (Fixed *)&j;
+
 	std::cout << std::endl << "MIN MAX" << std::endl;
 	std::cout << "g = " << g << ", h = " << h << std::endl;
-	std::cout << "member func" << std::endl;
+	std::cout << "non const func" << std::endl;
 	std::cout << "min(g,h) = " << Fixed::min(g,h) << std::endl;
 	std::cout << "max(g,h) = " << Fixed::max(g,h) << std::endl;
-	std::cout << "non member func" << std::endl;
-	std::cout << "min(g,h) = " << min(g,h) << std::endl;
-	std::cout << "max(g,h) = " << max(g,h) << std::endl;
+	std::cout << "const func" << std::endl;
+	std::cout << "min(i,j) = " << Fixed::min(i,j) << std::endl;
+	std::cout << "max(i,j) = " << Fixed::max(i,j) << std::endl;
 
 	g = g * -1;
+	*tmpi = *tmpi * -1;
 	std::cout << std::endl << "g = " << g << ", h = " << h << std::endl;
-	std::cout << "member func" << std::endl;
+	std::cout << "non const func" << std::endl;
 	std::cout << "min(g,h) = " << Fixed::min(g,h) << std::endl;
 	std::cout << "max(g,h) = " << Fixed::max(g,h) << std::endl;
-	std::cout << "non member func" << std::endl;
-	std::cout << "min(g,h) = " << min(g,h) << std::endl;
-	std::cout << "max(g,h) = " << max(g,h) << std::endl;
+	std::cout << "const func" << std::endl;
+	std::cout << "min(i,j) = " << Fixed::min(i,j) << std::endl;
+	std::cout << "max(i,j) = " << Fixed::max(i,j) << std::endl;
 
 	g = g * -1;
 	h = h * -1;
+	*tmpi = *tmpi * -1;
+	*tmpj = *tmpj * -1;
 	std::cout << std::endl <<"g = " << g << ", h = " << h << std::endl;
 	std::cout << "member func" << std::endl;
-	std::cout << "min(g,h) = " << Fixed::min(g,h) << std::endl;
-	std::cout << "max(g,h) = " << Fixed::max(g,h) << std::endl;
+	std::cout << "min(i,j) = " << Fixed::min(i,j) << std::endl;
+	std::cout << "max(i,j) = " << Fixed::max(i,j) << std::endl;
 	std::cout << "non member func" << std::endl;
-	std::cout << "min(g,h) = " << min(g,h) << std::endl;
-	std::cout << "max(g,h) = " << max(g,h) << std::endl;
+	std::cout << "min(i,j) = " << Fixed::min(i,j) << std::endl;
+	std::cout << "max(i,j) = " << Fixed::max(i,j) << std::endl;
 
 	return (0);
 }

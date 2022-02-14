@@ -14,6 +14,9 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $@
 
+debug:		$(OBJS)
+			$(CC) $(CFLAGS) -fsanitize=address $^ -o $@
+
 .cpp.o:
 			$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
 

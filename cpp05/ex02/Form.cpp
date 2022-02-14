@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:46:15 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/11 07:00:49 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/13 15:33:00 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ char const	*Form::GradeTooHighException::what() const throw()
 char const	*Form::GradeTooLowException::what() const throw()
 {
 	return ("Form::GradeTooLowException");
+}
+
+char const	*Form::NotSignedException::what() const throw()
+{
+	return ("Form::NotSignedException");
 }
 
 std::ostream	&operator<<(std::ostream& os, Form const& f)

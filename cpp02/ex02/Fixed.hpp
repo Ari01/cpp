@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 05:52:46 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/03 19:48:54 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 08:41:05 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ class Fixed
 
 		// operators
 		Fixed				&operator=(Fixed const& f);
-		bool				operator>(Fixed const& f);
-		bool				operator<(Fixed const& f);
-		bool				operator>=(Fixed const& f);
-		bool				operator<=(Fixed const& f);
-		bool				operator==(Fixed const& f);
-		bool				operator!=(Fixed const& f);
-		Fixed				operator+(Fixed const& f);
-		Fixed				operator-(Fixed const& f);
-		Fixed				operator*(Fixed const& f);
-		Fixed				operator/(Fixed const& f);
+		bool				operator>(Fixed const& f) const;
+		bool				operator<(Fixed const& f) const;
+		bool				operator>=(Fixed const& f) const;
+		bool				operator<=(Fixed const& f) const;
+		bool				operator==(Fixed const& f) const;
+		bool				operator!=(Fixed const& f) const;
+		Fixed				operator+(Fixed const& f) const;
+		Fixed				operator-(Fixed const& f) const;
+		Fixed				operator*(Fixed const& f) const;
+		Fixed				operator/(Fixed const& f) const;
 		Fixed				&operator++(void);
 		Fixed				operator++(int);
 		Fixed				&operator--(void);
@@ -54,11 +54,11 @@ class Fixed
 
 		// min max
 		static Fixed		&min(Fixed &f1, Fixed &f2);
+		static Fixed const	&min(Fixed const &f1, Fixed const &f2);
 		static Fixed		&max(Fixed &f1, Fixed &f2);
+		static Fixed const	&max(Fixed const &f1, Fixed const &f2);
 };
 
-Fixed			&min(Fixed &f1, Fixed &f2);
-Fixed			&max(Fixed &f1, Fixed &f2);
 std::ostream	&operator<<(std::ostream &os, Fixed const &f);
 
 #endif
