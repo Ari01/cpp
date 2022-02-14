@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:35:56 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/13 17:33:21 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:35:06 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ class	Bureaucrat;
 
 class Form
 {
+	protected:
+		std::string	_target;
+
 	private:
 		std::string const	_name;
 		bool				_sign;
@@ -27,7 +30,7 @@ class Form
 	
 	public:
 		Form();
-		Form(std::string name, int signGrade, int execGrade);
+		Form(std::string name, std::string target, int signGrade, int execGrade);
 		Form(Form const& f);
 		virtual ~Form();
 
@@ -38,6 +41,7 @@ class Form
 		int					getExecGrade() const;
 		void				beSigned(Bureaucrat const& b);
 		virtual void		execute(Bureaucrat const& e) const = 0;
+		bool				checkExecGrade(Bureaucrat const& e) const;
 
 		class GradeTooHighException : public std::exception
 		{

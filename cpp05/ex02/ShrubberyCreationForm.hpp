@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:43:02 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/13 17:42:05 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:28:08 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@
 
 class ShrubberyCreationForm : public Form
 {
-	private:
-		std::string	_target;
-
-		void	exec() const;
-
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string name, std::string target);

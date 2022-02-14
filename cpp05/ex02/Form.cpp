@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:46:15 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/13 15:33:00 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:35:22 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 Form::Form() : _name("unknown"), _sign(0), _signGrade(150), _execGrade(150) {}
 
-Form::Form(std::string name, int signGrade, int execGrade) :
-	_name(name), _sign(0),  _signGrade(signGrade), _execGrade(execGrade)
+Form::Form(std::string target, std::string name, int signGrade, int execGrade) :
+	_target(target), _name(name), _sign(0),  _signGrade(signGrade), _execGrade(execGrade)
 {
 	if (_signGrade < 1 || _execGrade < 1)
 		throw Form::GradeTooHighException();
@@ -46,6 +46,7 @@ Form	&Form::operator=(Form const& f)
 
 	*ntmp = f._name;
 	_sign = f._sign;
+	_target = f._target;
 	*sgtmp = f._signGrade;
 	*egtmp = f._execGrade;
 	return (*this);
@@ -77,6 +78,17 @@ void	Form::beSigned(Bureaucrat const& b)
 		_sign = 1;
 	else
 		throw Form::GradeTooLowException();
+}
+
+bool	Form::checkExecGrade(Bureaucrat const& e) const
+{
+	if (!getSign())
+		throw Form::NotSignedException();
+	else if (e.getGrade() > getExecGrade())
+		throw Form::GradeTooLowException();
+	else
+		return (true);
+	return (false);
 }
 
 char const	*Form::GradeTooHighException::what() const throw()

@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:20:37 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/13 15:21:41 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:25:11 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ class PresidentialPardonForm : public Form
 {
 	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm(PresidentialPardonForm const& scf);
+		PresidentialPardonForm(std::string name, std::string target);
+		PresidentialPardonForm(PresidentialPardonForm const& ppf);
 		virtual ~PresidentialPardonForm();
 
-		PresidentialPardonForm		&operator=(PresidentialPardonForm const& scf);
+		PresidentialPardonForm		&operator=(PresidentialPardonForm const& ppf);
 		virtual void				execute(Bureaucrat const& e) const;
 };
 

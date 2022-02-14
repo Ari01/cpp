@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:34:34 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/11 06:30:48 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:48:42 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Bureaucrat
 		void				upgrade();
 		void				downgrade();
 		void				signForm(Form &f) const;
+		void				executeForm(Form const& f) const;
 
 		class GradeTooHighException : public std::exception
 		{

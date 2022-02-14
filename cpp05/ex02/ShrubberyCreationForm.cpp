@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:22:07 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/13 17:42:10 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:38:56 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() :
-	Form("unknown", 145, 137), _target("unknown") {}
+	Form("unknown", "unknown", 145, 137) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name, std::string target) :
-	Form(name, 145, 137), _target(target) {}
+	Form(target, name, 145, 137) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& scf)
 {
@@ -33,35 +33,30 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const& scf)
 {
 	Form::operator=(scf);
-	_target = scf._target;
 	return (*this);
-}
-
-void	ShrubberyCreationForm::exec() const
-{
-	std::string line;
-	std::string	path = _target + "_shrubbery";
-	std::ofstream ofs(path.c_str());
-	std::ifstream ifs("tree.txt");
-
-	if (!ifs.is_open() || !ofs.is_open())
-		std::cout << "error could not open file" << std::endl;
-	else
-	{
-		while (ifs)
-		{
-			std::getline(ifs, line);
-			ofs << line << std::endl;
-		}
-	}
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-	if (!getSign())
-		throw Form::NotSignedException();
-	else if (executor.getGrade() > getExecGrade())
-		throw Form::GradeTooLowException();
-	else
-		exec();
+	if (checkExecGrade(executor))
+	{
+		std::string line;
+		std::string	path = _target + "_shrubbery";
+		std::ofstream ofs(path.c_str());
+		std::ifstream ifs("tree.txt");
+
+		if (!ifs.is_open() || !ofs.is_open())
+			std::cout << "error could not open file" << std::endl;
+		else
+		{
+			while (ifs)
+			{
+				std::getline(ifs, line);
+				ofs << line << std::endl;
+			}
+			std::cout << "trees successfully drawn in " << path << std::endl;
+			ifs.close();
+			ofs.close();
+		}
+	}
 }

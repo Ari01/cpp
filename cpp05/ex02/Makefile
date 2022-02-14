@@ -3,6 +3,8 @@ NAME =		bureaucrat
 SRC =		Bureaucrat.cpp \
 			Form.cpp \
 			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
 			main.cpp
 
 OBJS =		$(SRC:.cpp=.o)
