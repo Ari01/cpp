@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 01:49:39 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/07 02:08:31 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:55:25 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ std::string WrongAnimal::getType() const
 
 WrongAnimal &WrongAnimal::operator=(WrongAnimal const& a)
 {
-	type = a.type;
+	if (this != &a)
+		type = a.type;
 	return (*this);
 }
 

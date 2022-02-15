@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 09:39:57 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/07 11:44:51 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:58:00 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ std::string	Brain::getIdea(int i)
 
 Brain	&Brain::operator=(Brain const& b)
 {
-	for (int i = 0; i < 100; i++)
-		ideas[i] = b.ideas[i];
+	if (this != &b)
+	{
+		for (int i = 0; i < 100; i++)
+			ideas[i] = b.ideas[i];
+	}
 	return (*this);
 }
 

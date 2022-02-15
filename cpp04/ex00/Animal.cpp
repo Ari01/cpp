@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:37:12 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/07 02:08:06 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:42:33 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ std::string Animal::getType() const
 
 Animal &Animal::operator=(Animal const& a)
 {
-	type = a.type;
+	if (this != &a)
+		type = a.type;
 	return (*this);
 }
 

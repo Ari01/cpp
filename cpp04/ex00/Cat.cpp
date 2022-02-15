@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:45:53 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/07 01:41:23 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:42:59 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ Cat::~Cat()
 
 Cat &Cat::operator=(Cat const& a)
 {
-	type = a.type;
+	if (this != &a)
+		type = a.type;
 	return (*this);
 }
 

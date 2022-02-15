@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:45:53 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/07 11:48:41 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:52:57 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ Brain	*Cat::getBrain()
 
 Cat &Cat::operator=(Cat const& a)
 {
-	type = a.type;
-	brain = new Brain();
-	*brain = *(a.brain);
+	if (this != &a)
+	{
+		delete (brain);
+		type = a.type;
+		brain = new Brain();
+		*brain = *(a.brain);
+	}
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 00:57:05 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/10 03:13:51 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:33:39 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ AMateria::~AMateria()
 
 AMateria	&AMateria::operator=(AMateria const& m)
 {
-	_type = m.getType();
+	(void)m;
 	return (*this);
 }
 

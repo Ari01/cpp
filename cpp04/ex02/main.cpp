@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 01:08:46 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/07 12:08:37 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:00:07 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,9 @@ int	main()
 		std::cout << std::endl;
 		std::cout << "Animal " << i << " is a " << animal[i]->getType() << std::endl;
 		if (animal[i]->getType() == "Cat")
-		{
-			delete(cat.getBrain());
 			cat = *(Cat *)animal[i];
-		}
 		else
-		{
-			delete(dog.getBrain());
 			dog = *(Dog *)animal[i];
-		}
 		std::cout << "Its primary thought is : ";
 		if (animal[i]->getType() == "Cat")
 			std::cout << cat.getBrain()->getIdea(0) << std::endl;

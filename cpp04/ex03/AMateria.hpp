@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 12:20:09 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/10 01:51:21 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:41:46 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class ICharacter;
 class AMateria
 {
 	protected:
-		std::string _type;
+		std::string const _type;
 
 	public:
 		AMateria();

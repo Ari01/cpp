@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:49:31 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/07 01:23:21 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:43:18 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ Dog::~Dog()
 
 Dog &Dog::operator=(Dog const& a)
 {
-	type = a.type;
+	if (this != &a)
+		type = a.type;
 	return (*this);
 }
 

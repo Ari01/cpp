@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 01:53:33 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/10 10:40:10 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:34:01 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main()
 	ICharacter		*me = new Character("me");
 	ICharacter		*bob = new Character("bob");
 	AMateria		*tmp;
-
+	
 	std::cout << std::endl;
 	src->learnMateria(new Ice());
 	src->learnMateria(new Ice());

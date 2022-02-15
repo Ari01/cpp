@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 01:54:23 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/07 01:57:20 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:43:52 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ WrongCat::~WrongCat()
 
 WrongCat &WrongCat::operator=(WrongCat const& a)
 {
-	type = a.type;
+	if (this != &a)
+		type = a.type;
 	return (*this);
 }
 
