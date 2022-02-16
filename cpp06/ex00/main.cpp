@@ -6,20 +6,30 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 08:44:21 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/16 13:53:16 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:35:17 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cstdlib>
-#include <limits.h>
-#include <float.h>
+#include <climits>
+#include <cfloat>
+#include <cmath>
+#include <cerrno>
 
 #define CHAR 	0
 #define INT		1
 #define FLOAT	2
 #define DOUBLE	3
 #define STRING	4
+
+void	print_bad_string()
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: impossible" << std::endl;
+	std::cout << "double: impossible" << std::endl;
+}
 
 void	print_c(double d, char c)
 {
@@ -49,11 +59,11 @@ void	print_f(double d, float f)
 	if (d < FLT_MIN || d > FLT_MAX)
 		std::cout << "overflow";
 	else
-		std::cout << f + "f";
+		std::cout << f << "f";
 	std::cout << std::endl;
 }
 
-void	print_d(double d, double castedDouble)
+/*void	print_d(double d, double castedDouble)
 {
 	std::cout << "double: ";
 	if ((d == HUGE_VAL || d == -HUGE_VAL) && errno == ERANGE)
@@ -62,7 +72,7 @@ void	print_d(double d, double castedDouble)
 		std::cout << "underflow";
 	else
 		std::cout << castedDouble << std::endl;
-}
+}*/
 
 void	convert_c(std::string s)
 {
@@ -87,13 +97,8 @@ void	convert_i(std::string s)
 
 	d = strtod(s.c_str(), &endptr);
 	if (endptr[0])
-	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: impossible" << std::endl;
-		std::cout << "double: impossible" << std::endl;
-	}
-	else if (d > INT_MAX || d < INT_MIN)
+		print_bad_string();
+	else if (d == NAN || d > INT_MAX || d < INT_MIN)
 	{
 		std::cout << "char: overflow" << std::endl;
 		std::cout << "int: overflow" << std::endl;
@@ -102,21 +107,31 @@ void	convert_i(std::string s)
 	}
 	else
 	{
-		i = static_cast <int> (literal);
+		i = static_cast <int> (d);
 		print_c(d, static_cast <char> (i));
-		print_f(d, static_cast <float> (i));
-		print_d(d, static_cast <double> (i));
+		std::cout << "int: " << i << std::endl;
+		std::cout << "float: " << static_cast <float> (i) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast <double> (i) << ".0" << std::endl;
 	}
 }
 
 void	convert_f(std::string s)
 {
 	float	f;
-	float	literal;
+	double	d;
 	char	*endptr;
 
-	literal = strtof(s.c_str(), &endptr);
-	
+	d = strtod(s.c_str(), &endptr);
+	if (endptr[0] == 'f' && !endptr[1])
+	{
+		f = static_cast <float> (d);
+		print_c(d, static_cast <char> (f));
+		print_i(d, static_cast <int> (f));
+		std::cout << f << "f" << std::endl;
+		std::cout << static_cast <double> (f) << std::endl;
+	}
+	else
+		print_bad_string();
 }
 
 void	convert_d(std::string s)
@@ -127,7 +142,7 @@ void	convert_d(std::string s)
 }
 
 void	convert(std::string s)
-
+{
 	size_t	len;
 
 	len = s.size();
