@@ -1,6 +1,8 @@
 NAME =		convert
 
-SRC =		main.cpp
+SRC =		convert.cpp \
+			print.cpp \
+			main.cpp
 
 OBJS =		$(SRC:.cpp=.o)
 
