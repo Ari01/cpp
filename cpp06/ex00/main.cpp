@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 08:44:21 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/16 15:35:17 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/17 09:04:04 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,39 @@ void	print_bad_string()
 	std::cout << "double: impossible" << std::endl;
 }
 
-void	print_c(double d, char c)
+bool	printable_c(double d)
 {
 	std::cout << "char: ";
 	if (d < 0 || d > 255)
 		std::cout << "overflow";
-	else if (c < 32 || c > 126)
+	else if (d < 32 || d > 126)
 		std::cout << "Non displayable";
 	else
-		std::cout << c;
+		return (true);
 	std::cout << std::endl;
+	return (false);
 }
 
-void	print_i(double d, int i)
+bool	printable_i(double d)
 {
 	std::cout << "int: ";
 	if (d < INT_MIN || d > INT_MAX)
 		std::cout << "overflow";
 	else
-		std::cout << i;
+		return (true);
 	std::cout << std::endl;
+	return (false);
 }
 
-void	print_f(double d, float f)
+bool	printable_f(double d)
 {
 	std::cout << "float: ";
 	if (d < FLT_MIN || d > FLT_MAX)
 		std::cout << "overflow";
 	else
-		std::cout << f << "f";
+		return (true);
 	std::cout << std::endl;
+	return (false);
 }
 
 /*void	print_d(double d, double castedDouble)
@@ -85,8 +88,8 @@ void	convert_c(std::string s)
 	else
 		std::cout << c << std::endl;
 	std::cout << "int: " << static_cast <int> (c) << std::endl;
-	std::cout << "float: " << static_cast <float> (c) << std::endl;
-	std::cout << "double: " << static_cast <double> (c) << std::endl;
+	std::cout << "float: " << static_cast <float> (c) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast <double> (c) << ".0" << std::endl;
 }
 
 void	convert_i(std::string s)
@@ -98,17 +101,20 @@ void	convert_i(std::string s)
 	d = strtod(s.c_str(), &endptr);
 	if (endptr[0])
 		print_bad_string();
-	else if (d == NAN || d > INT_MAX || d < INT_MIN)
+	else if (d > INT_MAX || d < INT_MIN)
 	{
 		std::cout << "char: overflow" << std::endl;
 		std::cout << "int: overflow" << std::endl;
 		std::cout << "float: impossible" << std::endl;
 		std::cout << "double: impossible" << std::endl;
+		// std::cout << "float: " << static_cast <float> (d) << std::endl;
+		// std::cout << "double: " << d << std::endl;"
 	}
 	else
 	{
 		i = static_cast <int> (d);
-		print_c(d, static_cast <char> (i));
+		if (printable_c(d))
+			std::cout << static_cast <char> (i) << std::endl;
 		std::cout << "int: " << i << std::endl;
 		std::cout << "float: " << static_cast <float> (i) << ".0f" << std::endl;
 		std::cout << "double: " << static_cast <double> (i) << ".0" << std::endl;
@@ -122,13 +128,24 @@ void	convert_f(std::string s)
 	char	*endptr;
 
 	d = strtod(s.c_str(), &endptr);
-	if (endptr[0] == 'f' && !endptr[1])
+	std::cout << "d = " << d << std::endl;
+	std::cout << "FLT MIN = " << FLT_MIN << std::endl;
+	if (d > FLT_MAX || -d > FLT_MAX)
+	{
+		std::cout << "char: overflow" << std::endl;
+		std::cout << "int: overflow" << std::endl;
+		std::cout << "float: overflow" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+	}
+	else if (endptr[0] == 'f' && !endptr[1])
 	{
 		f = static_cast <float> (d);
-		print_c(d, static_cast <char> (f));
-		print_i(d, static_cast <int> (f));
-		std::cout << f << "f" << std::endl;
-		std::cout << static_cast <double> (f) << std::endl;
+		if (printable_c(d))
+			std::cout << static_cast <char> (f) << std::endl;
+		if (printable_i(d))
+			std::cout << static_cast <int> (f) << std::endl;
+		std::cout << "float: " << f << "f" << std::endl;
+		std::cout << "double: " << static_cast <double> (f) << std::endl;
 	}
 	else
 		print_bad_string();
@@ -148,7 +165,7 @@ void	convert(std::string s)
 	len = s.size();
 	if (!len || (len == 1 && !isdigit(s[0])))
 		convert_c(s);
-	else if (s.find('.') != std::string::npos)
+	else if (s.find('.') != std::string::npos || s.find('e') != std::string::npos)
 	{
 		if (s[len - 1] == 'f')
 			convert_f(s);
