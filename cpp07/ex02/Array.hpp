@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 16:52:09 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/18 11:28:56 by dchheang         ###   ########.fr       */
+/*   Created: 2022/02/18 11:29:57 by dchheang          #+#    #+#             */
+/*   Updated: 2022/02/18 12:49:01 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include <iostream>
 
 template <typename T>
-void	iter(T *p, size_t len, void (*f)(T const &))
+class Array
 {
-	size_t	i;
+	private:
+		T		*elem;
+		size_t	_size;
 
-	for (i = 0; i < len; i++)
-		f(p[i]);
-}
+	public:
+		Array();
+		Array(unsigned int n);
+		Array(Array const& a);
+		~Array();
 
-// test funcs
+		Array	&operator=(Array const& a);
+		T		&operator[](unsigned int n) const;
+		size_t	size(void) const;
+};
+
 template <typename T>
-void	print_tab(T const &a)
-{
-	std::cout << a << std::endl;
-}
+std::ostream	&operator<<(std::ostream& os, Array <T> const& a);
+
+#include "Array.tpp"
 
 #endif
