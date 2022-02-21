@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 12:14:09 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/21 18:11:17 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:22:23 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,26 +119,22 @@ int	main()
 		longestSpanTest(sp, "11");
 
 		std::cout << std::endl << "*****************INSERT RANGE*********************" << std::endl;
-		/*Span s3(10000);
+		Span s3(10000);
 		for (int i = 0; i < 10000; i++)
 			s3.addNumber(i);
 
-		std::cout << "s3(10000) with s3[i] = i" << std::endl;
-		std::cout << "create s4 with range s3.begin() to s3.end()" << std::endl;
-		Span s4(0);
-		std::vector<int>::iterator begin;
-		std::vector<int>::iterator end;
-
-		begin = s4.getSpan().begin();
-		end = s4.getSpan().end();*/
-
 		Span s4(10000);
-
 		std::list<int> l;
 		for (int i = 0; i < 10000; i++)
 			l.push_back(i);
 		s4.insert(l.begin(), l.end());
-		std::cout << s4 << std::endl;
+		std::cout << "shortest = " << s4.shortestSpan() << std::endl;
+		std::cout << "longest = " << s4.longestSpan() << std::endl;
+
+		Span s5(10000);
+		s5.insert(s3.getSpan().begin(), s3.getSpan().begin() + 1);
+		std::cout << "shortest = " << s4.shortestSpan() << std::endl;
+		std::cout << "longest = " << s4.longestSpan() << std::endl;
 	}
 	return (0);
 }
