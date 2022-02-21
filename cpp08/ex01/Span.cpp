@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:35:57 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/19 12:13:59 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:04:23 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,73 @@ Span	&Span::operator=(Span const& s)
 	return (*this);
 }
 
-void	addNumber(int n)
+void	Span::addNumber(int n)
 {
-	vector<int>::iterator	ite;
-	if (span.size() == N - 1)
+	std::vector<int>::iterator	ite;
+
+	if (span.size() == size)
 		throw arrayFullException();
-	for (ite = span.begin(); ite != span.end() && n > *ite; ite++) ;
-	*ite = n;
+	else
+	{
+		for (ite = span.begin(); ite != span.end() && n > *ite; ite++) ;
+		span.insert(ite, n);
+	}
+}
+
+int	Span::shortestSpan()
+{
+	int							shortest;
+	int							tmp;
+	std::vector<int>::iterator	ite;
+
+	if (span.size() <= 1)
+		throw (noShortestException());
+	ite = span.begin();
+	shortest = *(ite + 1) - *ite;
+	while (ite != span.end() - 1)
+	{
+		tmp = *(ite + 1) - *ite;
+		if (tmp < shortest)
+			shortest = tmp;
+		ite++;
+	}
+	return (shortest);
+}
+
+int	Span::longestSpan()
+{
+	if (span.size() <= 1)
+		throw (noLongestException());
+	return (*(span.end() - 1) - *span.begin());
+}
+
+std::vector<int>	Span::getSpan() const
+{
+	return (span);
+}
+
+std::ostream&	operator<<(std::ostream& os, Span const &s)
+{
+	std::vector<int>			vtmp;
+	std::vector<int>::iterator	ite;
+
+	vtmp = s.getSpan();
+	for (ite = vtmp.begin(); ite != vtmp.end(); ite++)
+		os << *ite << std::endl;
+	return (os);
+}
+
+char const	*Span::arrayFullException::what() const throw()
+{
+	return ("array full exception\n");
+}
+
+char const	*Span::noShortestException::what() const throw()
+{
+	return ("cannot find shortest span exception\n");
+}
+
+char const	*Span::noLongestException::what() const throw()
+{
+	return ("cannot find longest span exception\n");
 }

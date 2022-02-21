@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:30:34 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/19 12:19:08 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:04:01 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,43 @@ class Span
 {
 	private:
 		std::vector<int>	span;
-		const unsigned int	size;
+		unsigned int		size;
 
 	public:
 		Span(unsigned int N);
 		Span(Span const& s);
 		~Span();
 
-		Span	&operator=(Span const& s);
-		void	addNumber();
-		int		shortestSpan() const;
-		int		longestSpan() const;
+		Span				&operator=(Span const& s);
+		void				addNumber(int n);
+		int					shortestSpan();
+		int					longestSpan();
+		std::vector<int>	getSpan() const;
 
+		// template
+		template <typename T>
+		void				insert(T begin, T end);
+
+		// exception
 		class arrayFullException : std::exception
 		{
 			public:
 				virtual char const *what() const throw();
-		}
+		};
 		class noShortestException : std::exception
 		{
 			public:
 				virtual char const *what() const throw();
-		}
+		};
 		class noLongestException : std::exception
 		{
 			public:
 				virtual char const *what() const throw();
-		}
+		};
 };
+
+std::ostream&	operator<<(std::ostream& os, Span const &s);
+
+#include "Span.tpp"
 
 #endif
