@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 12:14:09 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/21 18:22:23 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:19:53 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,22 +119,48 @@ int	main()
 		longestSpanTest(sp, "11");
 
 		std::cout << std::endl << "*****************INSERT RANGE*********************" << std::endl;
-		Span s3(10000);
-		for (int i = 0; i < 10000; i++)
-			s3.addNumber(i);
-
+		std::cout << "ADD RANGE FROM BEGIN TO FIND 10 FROM LIST OF 10000" << std::endl;
+		// init s4
 		Span s4(10000);
+
+		// init list
 		std::list<int> l;
 		for (int i = 0; i < 10000; i++)
 			l.push_back(i);
-		s4.insert(l.begin(), l.end());
-		std::cout << "shortest = " << s4.shortestSpan() << std::endl;
-		std::cout << "longest = " << s4.longestSpan() << std::endl;
 
+		// insert list in span
+		s4.insert(l.begin(), std::find(l.begin(), l.end(), 10));
+		shortestSpanTest(s4, "1");
+		longestSpanTest(s4, "9");
+
+		std::cout << std::endl << "ADD RANGE FROM BEGIN TO BEGIN + 1 FROM SPAN OF 10000" << std::endl;
+		// init s3
+		Span s3(5);
+		for (int i = 0; i < 5; i++)
+			s3.addNumber(i);
+
+		// init s5
 		Span s5(10000);
-		s5.insert(s3.getSpan().begin(), s3.getSpan().begin() + 1);
-		std::cout << "shortest = " << s4.shortestSpan() << std::endl;
-		std::cout << "longest = " << s4.longestSpan() << std::endl;
+
+		// insert
+		std::vector<int> vtmp;
+		vtmp = s3.getSpan();
+		s5.insert(vtmp.begin(), (vtmp.begin() + 1));
+		shortestSpanTest(s5, "exception");
+		longestSpanTest(s5, "exception");
+
+		std::cout << std::endl << "ADD RANGE FROM BEGIN TO END FROM VECTOR OF 10000" << std::endl;
+		Span s6(10000);
+
+		// init vtmp
+		vtmp.resize(0);
+		for (int i = 0; i < 20000; i+=2)
+			vtmp.push_back(i);
+
+		// insert 
+		s6.insert(vtmp.begin(), vtmp.end());
+		std::cout << "shortest span (expected 2) : " << s6.shortestSpan() << std::endl;
+		std::cout << "longest span (expected 19998) : " << s6.longestSpan() << std::endl;
 	}
 	return (0);
 }

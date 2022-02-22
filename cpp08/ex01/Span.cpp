@@ -6,10 +6,11 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:35:57 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/21 18:04:23 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:23:40 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <algorithm>
 #include "Span.hpp"
 
 Span::Span(unsigned int N) : size(N) {}
@@ -19,10 +20,7 @@ Span::Span(Span const& s)
 	*this = s;
 }
 
-Span::~Span()
-{
-	std::cout << "Span destructor called" << std::endl;
-}
+Span::~Span(){}
 
 Span	&Span::operator=(Span const& s)
 {
@@ -38,45 +36,60 @@ void	Span::addNumber(int n)
 {
 	std::vector<int>::iterator	ite;
 
+	//std::cout << "span.size = " << span.size() << " , size = " << size << std::endl;
 	if (span.size() == size)
 		throw arrayFullException();
 	else
-	{
-		for (ite = span.begin(); ite != span.end() && n > *ite; ite++) ;
-		span.insert(ite, n);
-	}
+		span.push_back(n);
 }
 
 int	Span::shortestSpan()
 {
 	int							shortest;
 	int							tmp;
-	std::vector<int>::iterator	ite;
+	std::vector<int>::iterator	begin;
+	std::vector<int>::iterator	end;
 
+	shortest = -1;
 	if (span.size() <= 1)
 		throw (noShortestException());
-	ite = span.begin();
-	shortest = *(ite + 1) - *ite;
-	while (ite != span.end() - 1)
+	begin = span.begin();
+	end = span.end();
+	std::sort(begin, end);
+	shortest = *(begin + 1) - *begin;
+	begin++;
+	while (begin != end - 1)
 	{
-		tmp = *(ite + 1) - *ite;
+		tmp = *(begin + 1) - *begin;
 		if (tmp < shortest)
 			shortest = tmp;
-		ite++;
+		begin++;
 	}
 	return (shortest);
 }
 
 int	Span::longestSpan()
 {
+	std::vector<int>::iterator	begin;
+	std::vector<int>::iterator	end;
+
 	if (span.size() <= 1)
 		throw (noLongestException());
-	return (*(span.end() - 1) - *span.begin());
+	begin = span.begin();
+	end = span.end();
+	std::sort(begin, end);
+	return (*(end - 1) - *begin);
 }
 
 std::vector<int>	Span::getSpan() const
 {
 	return (span);
+}
+
+
+unsigned int Span::getSize() const
+{
+	return (size);
 }
 
 std::ostream&	operator<<(std::ostream& os, Span const &s)

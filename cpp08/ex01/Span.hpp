@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:30:34 by dchheang          #+#    #+#             */
-/*   Updated: 2022/02/21 18:04:01 by dchheang         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:01:58 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Span
 		int					shortestSpan();
 		int					longestSpan();
 		std::vector<int>	getSpan() const;
+		unsigned int		getSize() const;
 
 		// template
 		template <typename T>
